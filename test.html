@@ -1,12 +1,53 @@
 <!DOCTYPE html>
-<html>
-<body style="background-color:rgb(120, 8, 196);"></body>>
-<h1 style="background-color:DodgerBlue;">My First Heading</h1>
-<p style="background-color:Tomato;">My first paragraph.</p>
-<a href="https://www.w3schools.com">Visit W3Schools</a>
-<p style="color:red;">This is a red paragraph.</p>
-<h1 style="font-family:verdana;">This is a heading</h1>
-<p style="font-family:courier;">This is a paragraph.</p>
-</p>
+<html lang="en">
+<head>
+  <!--ส่วนที่ไม่แสดงออกไปในหน้านจอ ของ Browser-->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 1.แต่งใคร (id class DOM)2.แต่งอะไร*/
+    body {
+      background-color: rgba(10, 63, 87, 0.836);
+    }
+    #regiter{color: #ececec;
+    font-size: 50px;
+    color: #0a089b;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #95bfff;
+    border: 1px solid #0a089b;
+    padding-left: 10px;
+    }
+    @font-face {
+      font-family: 'Kanit';
+      src: url('./Kanit/Kanit-Regular.ttf') format('truetype');
+    }  
+    body{
+      font-family: 'Kanit',sans-serif
+    }
+  </style>
+</head>
+<body>
+  <!-- ส่วนที่แสดงออกไปหน้าจอ ของ Browser-->
+  <!-- From -->
+    <div id="regiter">Regiter From</div>
+  
+  ชื่อ<input class="form" type="text"> 
+  นามสกุล<input type="text"> <br>
+  อายุ<input type="number"><br>
+  เพศ<input type="radio" name="gender"Value="male">ชาย
+      <input type="radio" name="gender"Value="feamle">หญิง
+งานอดิเรก<br>
+<input type="checkbox" name="hoyby"value="reading">อ่านหนังสือ<br>
+<input type="checkbox" name="hoyby"value="traveding">ท่องเที่ยว<br>
+<input type="checkbox" name="hoyby"value="sports">เล่นกีฬา<br>
+อธิบายตัวเอง<br>
+<textarea row="4" cols="50"></textarea><br>
+<input type="submit"value="submit">
+
 </body>
 </html>

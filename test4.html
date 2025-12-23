@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale">
+<title>Document</title>
+<style>
+    .bouton {
+        background-color: blue;
+        border: 0;
+        padding: 10px;
+    }
+    .bouton:hover{
+        background-color: green;
+    }
+    .bouton.active{
+        background-color: red;
+    }
+    input:focus{
+        background-color: blueviolet;
+    }
+    .container .item:first-child{
+        background-color: rgb(94, 180, 255);
+    }
+    .container .item:last-child{
+        background-color: blue;
+    }
+    .container .item:nth-child(2){
+        background-color: blueviolet;
+    }
+    .container .item:nth-child(4){
+        background-color: rgb(193, 142, 240);
+    }
+</style>
+</head>
+<body>
+    <input type="text">
+    <button class="button">normal button</button>
+
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+</body>
+</html>
