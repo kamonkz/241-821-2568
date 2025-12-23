@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container .item {
+            background-color: lightblue;
+        }
+        .button {
+            background-color: green;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button.active {
+            background-color: rgb(0, 225, 255);
+        }
+        .button.warning {
+            background-color: rgb(255, 0, 0);
+        }
+        .item1 + .item2 {
+            background-color: blueviolet;
+        }
+        .button {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+        }
+        .button:hover {
+            background-color: green;
+        }
+        .buton:active {
+            background-color: red;
+        }
+        .button:focus {
+            background-color: yellow;
+        }
+        input:focus {
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        Container Content
+        <div class="item">
+            Item Content
+        </div>
+    </div>
+    <div class="footer-container">
+        Container Content
+        <div class="item">
+            Item Content
+        </div>
+    </div>
+    <button class="button">Click Me</button>
+    <button class="button active">Delete</button>
+    <button class="button warning">Warning</button>
+
+    <div class="item1">Item 1</div>
+    <div class="item2">Item 2</div>
+
+    <input type="text" name="sample-input">
+    <input type="text" name="another-input">
+    <input type="text" name="number-input">
+<!--:hover = วาง :active = คลิก :focus= cursor อยู่ตรง-->
+    <button class="button">Click Me!</button>
+</body>
+</html>
