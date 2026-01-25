@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            .container .item{
+                background-color: white ;
+            }
+            .main-container.item{
+                background-color: aqua;
+            }
+            .button{
+                background-color: aqua;
+                border: 0px;
+                padding: 10px;
+            }
+            .button.active{
+                background-color: rgb(255, 0, 0)
+            }
+            .button.danger{
+                background-color: rgb(145, 255, 0) 
+            }
+            .item1 + .item2{
+                background-color: rgb(145, 245, 120);
+            }
+            input[type="text"]{
+                border: 2px solid blue;
+                
+            }
+
+        </style>
+
+    </head>
+<body>
+        <div class="container">
+        container
+        <div class="item">
+            Item 1
+        </div>
+    </div>
+
+    <div class="footer-container">
+        container
+        <div class="item">
+            Item 1
+        </div>
+    </div>
+
+    <button class="button">click me</button>
+    <button class="button active">click me</button>
+    <button class="button danger">click me</button>
+
+    <div class="item1">Item 1</div>
+    <div class="item2">Item 2</div>
+
+    <input type="text" name="fitstname">
+    <input type="text" name="lastname">
+
+
+</body> 
+</html>
+    

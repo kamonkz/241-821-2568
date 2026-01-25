@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>แบบฟอร์มเลือกความสนใจ</h2>
+    <div id="content">
+    </div>
+    <input type="Checkbox" name="interest" value="กีฬา"> กีฬา
+    <input type="Checkbox" name="interest" value="ดนตรี"> ดนตรี
+    <input type="Checkbox" name="interest" value="อ่านหนังสือ"> อ่านหนังสือ
+    <br><br>
+    <button onclick="submitInterest()">ส่งข้อมูล</button>
+    <script>
+        function submitInterest() {
+            // ดึงข้อมูลจาก checkbox ที่ถูกเลือก
+            let checkboxes = document.querySelectorAll('input[name="interest]');
+            let contentHTML = '</ul>';
+            //เอา value ของ checkbox ที่ถูกเลือกออกมา
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    console.log(checkboxes[i].value); // แสดงค่าที่เลือกใน console
+                    contenHTML += '<li>' + checkboxes[i].value + '</li>';
+                }
+            }
+            //วนค่าที่เลือกใส่กลับไปที่ html
+            
+            contenHTML += '</ul>';
+
+            //ใส่htmal ที่สร้างขึ้นใหม่ลงใน div id="content"
+            let contentDiv = document.getElementById('content');
+            contentDiv.innerHTML = contenHTML;
+        }
+    </script>
+
+   </body>
+   </html>         
