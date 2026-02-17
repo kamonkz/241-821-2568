@@ -41,3 +41,4 @@ networks:
 volumes:
   mysql_data_821:
     driver: local
+    
