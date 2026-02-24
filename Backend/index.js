@@ -1,69 +1,85 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { use } = require('react');
+const mysql = require('mysql2/promise');
 const app = express();
-const port = 8000
+const port = 8000;
 app.use(bodyParser.json());
 let users = []
-let couter = 1;
-// path = GET /users
-app.get('/users', (req, res) => {
-    res.json(users);
-});
+let counter = 1;
 
-// path= POST /user
-app.post('/user', (req, res) => {
+let conn = null
+const initDBConnection = async () => {
+    conn = await mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'webdb',
+        port: 8821
+    })
+}
+
+//path = GET /users สำหรับ get ข้อมูล users ทั้งหมด
+app.get('/users', async (req, res) => {
+    const results = await conn.query('SELECT * FROM users')
+    res.json(results[0])
+})
+
+//path = POST /users สำหรับเพิ่ม users ใหม่
+app.post('/users', async (req, res) => {
     let user = req.body;
-    users.push(user);
-    couter += 1;
+    const results = await conn.query('INSERT INTO users SET ?', user);
+    console.log('results:', results);
     res.json({
-        message: 'User added successfully',
-        user: user  }); 
-})        
+        message: 'User created successfully',
+        data: results[0]
+    });
+})
 
+//path = PUT /user/:id
+app.patch('/user/:id', (req, res) => {
+    let id = req.params.id
+    let updatedUser = req.body;
+    // หา users จาก id
+    let selectedIndex = users.findIndex(user => user.id == id)
+    //update users นั้น
+    if (updatedUser.name) {
+        users[selectedIndex].name = updatedUser.name || users[selectedIndex].name
+    }
+    if (updatedUser.age) {
+        users[selectedIndex].age = updatedUser.age || users[selectedIndex].age
+    }
 
+    //ส่ง response กลับไปว่า update users ที่เลือกสำเร็จแล้ว
 
-
-// path = PUT /user/:id
-app.put('/user/:id', (req, res) => {
-    let id = req.params.id;
-    //user จาก id ที่ส่งมา
-    let selectedIndex = users.findIndex(user => user.id == id);
-
-    //อัพเดทข้อมูล user
-    users[selectedIndex].name = updateUser.name || users[selectedIndex].name;
-    users[selectedIndex].email = updateUser.email || users[selectedIndex].email;
-
-
-
-
-
-    //เอาข้อมูลที่อัพเดทแล้วส่งกลับไป
     res.json({
         message: 'User updated successfully',
         data: {
             user: updatedUser,
             indexUpdated: selectedIndex
         }
-    });
-})
-    
-// path = DELETE /user/:id
-app.delete('/user/:id', (req, res) => {
-    let id = req.params.id;
-    //user จาก id ที่ส่งมา
-    let selectedIndex = users.findIndex(user => user.id == id);
-
-    delete users[selectedIndex];
-
-    res.json({
-        message: 'User deleted successfully',
-              indexDeleted: selectedIndex
-    });
+    })
 })
 
+//path = DELETE /users/:id
+app.delete('/users/:id', (req, res) => {
+    let id = req.params.id
+    let selectedIndex = users.findIndex(user => user.id == id)
+    if (selectedIndex !== -1) {
+        users.splice(selectedIndex, 1)
+        res.json({
+            message: 'User deleted successfully',
+            data: {
+                indexDeleted: selectedIndex
+            }
+        })
+    } else {
+        res.status(404).json({
+            message: 'User not found'
+        })
+    }
+})
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+app.listen(port, async () => {
+    await initDBConnection();
+    console.log(`Server is running on port ${port}`);
 });
-
